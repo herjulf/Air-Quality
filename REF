@@ -1,3 +1,28 @@
+Air Quality
+https://www.airnow.gov/index.cfm?action=airnow.calculator
+
+PMS5003 reviw ska komma:
+http://www.hackair.eu/wp-content/uploads/2016/12/d3.5-1st_design_guidelines_for_open_sensor_fabrication.pdf
+
+
+Estimation of particle mass concentration in ambient air using a particle counter - ScienceDirect
+http://www.sciencedirect.com/science/article/pii/S135223100800695X
+
+Berkeley papper Dylos
+http://ehsdiv.sph.berkeley.edu/krsmith/publications/2013/Northcross%20BAIRS%20ESPI%2013.pdf
+
+
 https://github.com/avaldebe/AQmon/blob/master/lua_modules/pms3003.lua
 http://aqicn.org/sensor/pms5003-7003/
+
 http://www.rigacci.org/wiki/lib/exe/fetch.php/doc/appunti/hardware/raspberrypi/pms5003-and-pms7003-experiment.pdf
+
+https://www.naturvardsverket.se/Sa-mar-miljon/Statistik-A-O/partiklar-pm10-realtidsdata/
+
+https://www.naturvardsverket.se/Sa-mar-miljon/Statistik-A-O/partiklar-pm10-realtidsdata/?visuallyDisabledSeries=60c0c56cf8cdd8fc
+
+
+http://www.smhi.se/polopoly_fs/1.14230!modellutv%C3%A4rdering.pdf
+Pollution particles 'get into brain' - http://www.bbc.co.uk/news/science-environment-37276219
+Dementia rates 'higher near busy roads' - http://www.bbc.co.uk/news/health-38506735
+
