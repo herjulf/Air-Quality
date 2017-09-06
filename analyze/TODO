@@ -1,0 +1,13 @@
+Functionianlity that would be nice to have documented in the python
+script.
+
+
+* Add info to plot so it also has relevant metadata so it plot becomes 
+  selfdocumented to ease comparsion and publiction.
+  - Description
+  - R**2 fit and regression line
+  - Mean Max/Max mean and also for T/RH
+
+* Multiple Regression (T/RH)
+
+* Function for automatic fetch of SLB data
