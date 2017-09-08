@@ -120,6 +120,11 @@ int air_quality_level(double in, int pollutant)
  DB   2274  501   47    5    1    1
 */
 
+double massf(double r, double cnt, double dens)
+{
+  return ((4./3.) * 3.141592 * r * r * r) * cnt * dens;
+}
+
 double mass(double r, int cnt, double dens)
 {
   return ((4./3.) * 3.141592 * r * r * r) * cnt * dens;
@@ -127,38 +132,38 @@ double mass(double r, int cnt, double dens)
 
 double mass10(double cnt, double dens)
 {
-  double r = 7.5/2;
+  double r = 10/2;
   return ((4./3.) * 3.141592 * r * r * r) * cnt * dens;
 }
 
 double mass5(double cnt, double dens)
 {
-  double r = (5+2.5)/4;
+  double r = (5)/2;
   return ((4./3.) * 3.141592 * r * r * r) * cnt * dens;
 }
 
 double mass2_5(double cnt, double dens)
 {
-  double r = (2.5+1)/4;
+  double r = (2.5)/2;
   return ((4./3.) * 3.141592 * r * r * r) * cnt * dens;
 }
 
 double mass1_0(double cnt, double dens)
 {
-  double r = (1+0.5)/4;
+  double r = (1.0)/2;
   return ((4./3.) * 3.141592 * r * r * r) * cnt * dens;
 }
 
 double mass0_5(double cnt, double dens)
 {
-  double r = (0.5+0.3)/4;
+  double r = (0.5)/2;
   return ((4./3.) * 3.141592 * r * r * r) * cnt * dens;
 }
 
 double mass0_3(double cnt, double dens)
 {
   double r = (0.3)/2;
-  cnt = cnt * 2; /* 50% effcieny for PMS5003 */
+  // cnt = cnt * 2; /* 50% effcieny for PMS5003 */
   return ((4./3.) * 3.141592 * r * r * r) * cnt * dens;
 }
 
@@ -234,7 +239,10 @@ int main(int ac, char *av[])
   double dpma[6];
   double dens = 1;
 
-  dens = 1.0;
+  /* 
+  dens = 1.65;
+  Tuch et al (2000)
+  */
 
   int obs;
 
@@ -310,5 +318,75 @@ int main(int ac, char *av[])
   printf("Plantower ATM:\tPM1.0=%-5.1f PM2.5=%-5.1f PM10=%-5.1f\n", 
 	 dpma[0], dpma[1], dpma[2]);
 
+#if 0 
+double mass(double r, int cnt, double dens)
+{
+  return ((4./3.) * 3.141592 * r * r * r) * cnt * dens;
 }
+#endif
+
+ double f0, f1, f2, f3, f4, f5, v0, v1, v2, v3, v4, v5, npm1_0, npm2_5, npm10, radius;
+
+ dens = 1.65;
+
+
+ // 13   14   15 ATM   13    14    15  DB 1959  456   41    5    1    1
+
+ ddb[0] = 1959;
+ ddb[1] = 456;
+ ddb[2] = 41;
+ ddb[3] = 5;
+ ddb[4] = 1;
+ ddb[5] = 1;
+
+ /* Between 0.3 - 0.5 um */
+ f0 = ddb[0] - ddb[1];
+ radius = (0.5)/2;
+ v0 = massf(radius, f0, dens);
+
+ /* Between 0.5 - 1.0 um */
+ f1 = ddb[1] - ddb[2];
+ radius = (1.0)/2;
+ v1 = massf(radius, f1, dens);
+
+ /* Between 1.0 - 2.5 um */
+ f2 = ddb[2] - ddb[3];
+ radius = (2.5)/2;
+ v2 = massf(radius, f2, dens);
+
+ /* Between 2.5 - 5.0 um */
+ f3 = ddb[3] - ddb[4];
+ radius = (5.0)/2;
+
+ v3 = massf(radius, f3, dens);
+
+ /* Between 5.0 - 10.0 um */
+ f4 = ddb[4] - ddb[5];
+ radius = (10.0)/2;
+ v4= massf(radius, f4, dens);
+
+ f5 = ddb[5];
+ radius = (10.0)/2;
+ v5= massf(radius, f5, dens);
+
+
+
+ npm1_0 = v0 + v1;
+ printf("PM1.0  %-5.2f %-5.2f SUM=%-5.2f\n ", v0, v1, npm1_0);
+
+
+ /* PM 2.5 */
+ //npm2_5 = f0 + f1 + f2;
+ //printf("%-5.2f %-5.2f %-5.2f %-5.2f\n ", f0, f1, f2, npm2_5);
+ npm2_5 = v0 + v1 + v2;
+ printf("PM2.5  %-5.2f %-5.2f %-5.2f SUM=%-5.2f\n ", v0, v1, v2, npm2_5);
+
+ npm10 = v0 + v1 + v2 + v3 + v4 ;
+ printf("PM10  %-5.2f %-5.2f %-5.2f %-5.2f %-5.2f SUM=%-5.2f\n ", v0, v1, v2, v3, v4, npm10);
+
+ /* PM10 */
+
+
+}
+
 
