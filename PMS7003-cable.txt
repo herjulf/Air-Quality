@@ -1,0 +1,10 @@
+8pin PMS cable to PMS7003 board.
+
+Violett - Vcc
+Orange  - GND
+
+Vit     - SET
+Grön    - TX
+Blå     - RX
+
+
