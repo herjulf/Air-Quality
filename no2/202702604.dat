@@ -1,0 +1,19 @@
+0.303 mv/ppb
+
+The general equation isμg/m3 = (ppb)*(12.187)*(M) / (273.15 + °C)
+1 ppb = 1.88 μg/m3 (25C)
+
+OP1 = Orange-Green = WE
+OP2 = Yellow - Green = AE
+
+
+5V @ 0.69mA
+
+mA      OP1     OP2
+0.69    200     200
+0.69    220     210
+0.69    228     216
+0.69    227     219
+0.69    229     218
+
+
