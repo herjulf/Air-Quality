@@ -1,0 +1,9 @@
+21.00 FAN ON
+21.10 OFF
+21.20 ON
+21.30 OFF
+21.40 ON
+21.50 OFF
+22.01 Data file collected
+
+Time on data file is skewed.
