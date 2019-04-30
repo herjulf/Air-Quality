@@ -1,0 +1,3 @@
+Room 2430 Electrum KTH. Indoor.
+Sensors PMS5003, PM2015
+Measurement height 1m on table.
