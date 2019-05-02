@@ -37,7 +37,7 @@ Recorded by IEEE 802.15.4 WSN Monitoring System" tc rgb "white"
 
 #set format x "%m%d"                      
 set xdata time
-set yrange [ -30 : 110 ] noreverse nowriteback
+set yrange [ -40 : 120 ] noreverse nowriteback
 #set xrange [ "2012-02-19 00:00:00" : "2012-02-21 24:00:00"] 
 #set xrange [ "2012-10-09 18:00:00" : ] 
 
@@ -46,12 +46,14 @@ set yrange [ -30 : 110 ] noreverse nowriteback
 set ylabel "pbm"  textcolor rgb "white"
 set border  lc rgb "white"
 
-#f2(x) = A2_mean;
-
+;
 set xdata
 stat "no2.dat" using 6  prefix "A2";
 stat "no2.dat" using 7  prefix "A3";
 stat "no2-2.dat" using 6  prefix "A4";
+
+#f2(x) = A2_mean;
+#f3(x) = A2_stddev
 
 set xdata time
 
@@ -65,7 +67,7 @@ plot \
 "no2-2.dat" using 1:($6)    axes x1y1 title "NO2-04" with dot ls 4, \
 "no2.dat" using 1:($6)    axes x1y1 title "NO2-02" with dot ls 5, \
 "no2.dat" using 1:($7)    axes x1y1 title "NO2-03" with dot ls 6, \
-A2_mean    axes x1y1 title gprintf("NO2-02 AVE=%5.1f",A2_mean) with line ls 6, \
-A3_mean    axes x1y1 title gprintf("NO2-03 AVE=%5.1f",A3_mean) with line ls 5, \
-A4_mean    axes x1y1 title gprintf("NO2-04 AVE=%5.1f",A4_mean) with line ls 4;
+A2_mean    axes x1y1 title sprintf("NO2-02 AVE=%5.1f STDDEV=%5.1f",A2_mean, A2_stddev) with line ls 6, \
+A3_mean    axes x1y1 title sprintf("NO2-03 AVE=%5.1f STDDEV=%5.1f",A3_mean, A3_stddev) with line ls 5, \
+A4_mean    axes x1y1 title sprintf("NO2-04 AVE=%5.1f STDDEV=%5.1f",A4_mean, A4_stddev) with line ls 4;
 
